@@ -9,6 +9,9 @@ import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
 import { Ejercicio1Component } from './components/ejercicio1/ejercicio1.component';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { MenuJuegosComponent } from './components/juegos/menu-juegos/menu-juegos.component';
+import { TatetiComponent } from './components/juegos/tateti/tateti.component';
+import { PreguntadoComponent } from './components/juegos/preguntado/preguntado.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     HomeComponent,
     QuienSoyComponent,
     Ejercicio1Component,
-    NotFoundComponent
+    NotFoundComponent,
+    MenuJuegosComponent,
+    TatetiComponent,
+    PreguntadoComponent
   ],
   imports: [
     BrowserModule,
