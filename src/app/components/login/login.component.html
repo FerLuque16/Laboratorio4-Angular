@@ -6,7 +6,7 @@
 <div class="w-75 p-3" style="background-color: #eee;">Width 75%</div>
 <div class="w-100 p-3" style="background-color: #eee;">Width 100%</div>
 <div class="w-auto p-3" style="background-color: #eee;">Width auto</div> -->
-<div class="d-flex justify-content-center align-items-center wrapper" style="height: 100vh;">
+<!-- <div class="d-flex justify-content-center align-items-center wrapper" style="height: 100vh;">
     <div class="login d-flex flex-column align-items-center justify-content-center text-center">
         <div class="d-flex flex-column w-50">
             <div class="data text-start mb-1">
@@ -24,4 +24,25 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<body>
+    <div class="d-flex justify-content-center align-items-center wrapper" style="height: 100vh;">
+        <div class="login d-flex flex-column align-items-center justify-content-center text-center">
+            <h2>Login</h2>
+            <div class="d-flex flex-column w-75">
+                <div class="data text-start mb-1">
+                    <input class="w-100" type="text" [(ngModel)]="user" placeholder="Usuario">
+                    <input  class="w-100" type="text" [(ngModel)]="pass" placeholder="Contraseña">
+    
+                </div>
+    
+                <div class="botones d-flex justify-content-between">
+                    <button class="boton entrar" (click)="login(user,pass)" >Ingresar</button>
+                    <button class="boton registrarse" (click)="redirigir()">Registrarme</button>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -8,10 +8,11 @@ import { TatetiComponent } from './components/juegos/tateti/tateti.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 const routes: Routes = [
 
-  {path:'',redirectTo: 'login', pathMatch:'full'},
+  {path:'',redirectTo: 'home', pathMatch:'full'},
   {path:'login',component:LoginComponent},
   {
     path:'menujuegos',component:MenuJuegosComponent,children:[
@@ -25,6 +26,7 @@ const routes: Routes = [
       path:'preguntado',component:PreguntadoComponent
     }
   ]},
+  {path:'registro',component:RegistroComponent},
   {
     path:'home', component:HomeComponent
   },

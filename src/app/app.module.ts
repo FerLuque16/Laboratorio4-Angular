@@ -12,6 +12,13 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MenuJuegosComponent } from './components/juegos/menu-juegos/menu-juegos.component';
 import { TatetiComponent } from './components/juegos/tateti/tateti.component';
 import { PreguntadoComponent } from './components/juegos/preguntado/preguntado.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,12 +30,18 @@ import { PreguntadoComponent } from './components/juegos/preguntado/preguntado.c
     NotFoundComponent,
     MenuJuegosComponent,
     TatetiComponent,
-    PreguntadoComponent
+    PreguntadoComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase)
+    // provideFirebaseApp(() => initializeApp(environment.firebase)),
+    // provideAuth(() => getAuth())
   ],
   providers: [],
   bootstrap: [AppComponent]
