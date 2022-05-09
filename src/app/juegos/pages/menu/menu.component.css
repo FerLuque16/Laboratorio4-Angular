@@ -1,0 +1,17 @@
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    /* height: 100vh; */
+    /* overflow: hidden;  */
+}
+.card-game{
+    width: 250px;
+}
+
+.card-body{
+    height: 250px;
+    width: 250px;
+    outline: 1px solid white;
+}

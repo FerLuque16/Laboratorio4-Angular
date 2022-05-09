@@ -1,0 +1,23 @@
+.titulo{
+    font-size: 4.5rem;
+}
+.palabra{
+    font-size: 4.25rem;
+    letter-spacing: 1rem;
+}
+.boton-letra{
+    width: 3rem !important;
+    margin: 0.25rem;
+}
+
+.mostrar{
+    display: block;
+}
+.oculto{
+    display: none;
+}
+/* .body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
