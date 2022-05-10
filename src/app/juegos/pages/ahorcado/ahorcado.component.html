@@ -14,7 +14,7 @@
     <div class="row">
         <div class="d-flex justify-content-center flex-wrap">
     
-            <button class="col-sm-1 btn-warning btn boton-letra" *ngFor="let letra of letras" (click)="letraSeleccionada(letra)">
+            <button [disabled]="cantidadIntentos == 0" class="col-sm-1 btn-warning btn boton-letra" *ngFor="let letra of letras" (click)="letraSeleccionada(letra)">
                 {{letra |uppercase}}
             </button>
         
@@ -27,9 +27,10 @@
             Te quedan: {{cantidadIntentos}} intentos.
             </span>
             <br>
-            <div class="col-md-12">
+            <div class="col-md-12 mt-2">
+              <a class="btn btn-primary mr-3" routerLink="/juegos">Volver</a>
                 <button class=" btn-success btn" 
-                style="height: 60px;" (click)="reiniciar()"> 
+                style="height: 40px;" (click)="reiniciar()"> 
                 Empezar de nuevo 
                 </button>
             </div>
@@ -50,6 +51,7 @@
           </button> -->
         </div>
         <div class="modal-body">
+          <p *ngIf="cantidadIntentos == 0">La palabra era: <strong>{{palabraElegida}}</strong> </p>
           <p>{{modalMsj2}}</p>
         </div>
         <div class="modal-footer">

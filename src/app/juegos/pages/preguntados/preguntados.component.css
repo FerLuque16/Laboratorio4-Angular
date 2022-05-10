@@ -1,0 +1,12 @@
+.respuesta{
+    cursor: pointer;
+}
+.respuesta:hover{
+    background-color: #7cb9fa;
+}
+.mostrar{
+    display: block;
+}
+.oculto{
+    display: none;
+}
