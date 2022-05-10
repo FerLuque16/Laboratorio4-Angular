@@ -1,0 +1,21 @@
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #23252C;
+    color: white ;
+    height: 100vh;
+    overflow: hidden !important;
+}
+.acierto{
+    color: green;
+}
+.error{
+    color: red;
+}
+.mostrar{
+    display: block;
+}
+.oculto{
+    display: none;
+}

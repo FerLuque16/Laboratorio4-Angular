@@ -1,4 +1,4 @@
-<p>preguntados works!</p>
+<!-- <p>preguntados works!</p>
 <button (click)="reiniciar()">Otra vez</button>
 <div class="container">
     <div class="row">
@@ -8,10 +8,11 @@
     </div>
 
 
-</div>
+</div> -->
 
-
-<div class="container">
+<div class="body vh-100">
+  
+  <div class="container">
     <div class="row mb-5">
         <div class="col-6 offset-3" *ngIf="paisCorrecto">
             <div class="d-flex justify-content-center align-items-center text-center flex-column">
@@ -30,11 +31,12 @@
             </div>
         </div>
     </div>
-</div>
+    <a routerLink="/juegos" class="btn btn-danger mt-5">Volver</a>
+  </div>
 
 <!-- Modal -->
 
-<div class="modal" [ngClass]="displayModal ? 'mostrar' : 'oculto'" >
+  <div class="modal" [ngClass]="displayModal ? 'mostrar' : 'oculto'" >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -52,6 +54,9 @@
         </div>
       </div>
     </div>
+  </div>
+
+
 </div>
 
 

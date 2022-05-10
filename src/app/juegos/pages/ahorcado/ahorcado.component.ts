@@ -23,6 +23,7 @@ export class AhorcadoComponent implements OnInit {
 
   cantidadIntentos: number = 0;
 
+
   displayModal:boolean = false;
   modalMsj1:string = '';
   modalMsj2: string = '';
@@ -75,6 +76,7 @@ export class AhorcadoComponent implements OnInit {
   }
 
   terminarJuego(){
+    this.displayModal = false;
     this.ruteo.navigateByUrl('juegos')
   }
 

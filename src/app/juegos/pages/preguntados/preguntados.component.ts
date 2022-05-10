@@ -60,6 +60,7 @@ export class PreguntadosComponent implements OnInit {
     this.displayModal = false;
   }
   terminarJuego(){
+    // this.displayModal = false;
     this.ruteo.navigateByUrl('juegos')
   }
 
