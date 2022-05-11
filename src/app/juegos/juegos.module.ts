@@ -9,6 +9,7 @@ import { JuegosRoutingModule } from './juegos-routing.module';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { SharedModule } from '../shared/shared.module';
 import { JuegosComponent } from './pages/juegos.component';
+import { ChatModule } from '../chat/chat.module';
 
 
 
@@ -20,11 +21,13 @@ import { JuegosComponent } from './pages/juegos.component';
     ReflejosComponent,
     MenuComponent,
     JuegosComponent
+    
   ],
   imports: [
     CommonModule,
     JuegosRoutingModule,
-    SharedModule
+    SharedModule,
+    ChatModule
   ]
 })
 export class JuegosModule { }

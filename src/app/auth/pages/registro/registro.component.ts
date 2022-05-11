@@ -20,7 +20,6 @@ export class RegistroComponent implements OnInit {
     try {
       await this.auth.registrar(name,pass);
 
-      
       console.log("El usuario se registró correctamente");
     } catch (error:any) {
       //this.toastr.error(this.utilidad.convertirMensaje(error.code),'Error al registrarse');

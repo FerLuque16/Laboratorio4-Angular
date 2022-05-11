@@ -94,6 +94,10 @@ h2{
     transition: 0.5s;
 } */
 
+.registrarse{
+    margin: 0 5px;
+}
+
 .login .data input:focus::placeholder {
     color: transparent;
   }
@@ -102,7 +106,8 @@ h2{
     color: #fff;
 }
 
-.botones button {
+.botones button,
+.botones a{
     border: 1px solid #fff;
     outline: none;
     color: #fff;
@@ -114,4 +119,12 @@ h2{
 
 .botones button:hover{
     background-color: rgba(0, 0, 0, 0.6);
+}
+
+.botones a:hover{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.boton{
+    height: 60px;
 }

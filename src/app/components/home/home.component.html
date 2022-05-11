@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center align-items-center vh-100 bg-dark position-relative">
-    <button *ngIf="displayLogIn" class="btn btn-success" (click)="navegarHacia('login')">Iniciar Sesion</button>
-    <button *ngIf="displayRegister" class="btn btn-warning" (click)="navegarHacia('registro')">Registrarse</button>
+    <a *ngIf="displayLogIn" class="btn btn-success" routerLink="/auth/login">Iniciar Sesion</a>
+    <a *ngIf="displayRegister" class="btn btn-warning" routerLink="/auth/registro">Registrarse</a>
     <button *ngIf="displayLogout" class="btn btn-warning" (click)="logOut()">Logout</button>
     <p class="userLogueado" *ngIf="usuario.email !== '' ">Usuario Actualmente Logueado: {{usuario.email}}</p>
     <h1 class="p-1 text-center text-white">Home Component</h1>

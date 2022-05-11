@@ -1,51 +1,48 @@
-<p>reflejos works!</p>
-
-<div class="body h-100 d-flex justify-content-center align-items-center flex-column">
+<div class="body vh-100 flex-column" [ngStyle]="{'background-color': cambiarBg ? 'green' : '#23252C'}">
 
     <div class="container">
         <div class="row d-flex justify-content-center">
             <strong>
-            <h1 class="text-center" style="color: black">Reflex Game</h1>
+            <h1 class="text-center">Juego de Reflejos</h1>
             </strong>
         </div>
         <div class="row d-flex justify-content-center">
-            <h2>Test your Response time!</h2>
+            <h2>Prueba tu tiempo de respuesta</h2>
         </div>
         <div class="row d-flex justify-content-center flex-column align-items-center">
-            <h3>How To Play</h3>
-            <p>Click on "Start" first, and wait until the 
-            background color changes. As soon as it
-            changes, hit "stop!"
+            <h3>Como jugar</h3>
+            <p>Presiona en "Iniciar" y espera a que el fondo cambie.
+                Cuando cambie de color, presiona en "Detener" para ver tu tiempo de respuesta
             </p>
-        
-            <br>
-            <form name="response">
-                Change background color to:
-                <select name="bgColorChange">
-                    <option selected>deeppink
-                        <option>aliceblue
-                        <option>crimson
-                        <option>darkkhaki
-                        <option>cadetblue
-                        <option>darkorchid
-                        <option>coral
-                        <option>chocolate
-                        <option>mediumslateblue
-                        <option>tomato
-                        <option>darkslategray
-                        <option>limegreen
-                        <option>cornflowerblue
-                        <option>darkolivegreen
-                </select>
-                <br>
-                <br>
-        
-                <input type="button" class="btn"
-                        value="Start" onClick="startit()">
-                <input type="button" class="btn" 
-                        value="Stop" onClick="stopTest()">
-            </form>
         <div>
+        <div class="row">
+            <button class="btn btn-primary mr-5" (click)="startit()">Iniciar</button>
+            <button class="btn btn-success" (click)="stopTest()">Detener</button>
+        </div>
+        
     </div>
+
+    <!-- Modal -->
+
+  <div class="modal" [ngClass]="displayModal ? 'mostrar' : 'oculto'" >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{modalMsj1}}</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;tu mama</span>
+          </button> -->
+        </div>
+        <div class="modal-body">
+          <p>{{modalMsj2}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="terminarJuego()" >Cerrar y volver al menu</button>
+          <button type="button" class="btn btn-primary" (click)="reiniciar()">Seguir jugando</button>
+        </div>
+      </div>
+    </div>
+  </div>
     
 </div>
+<a class="btn btn-danger" routerLink="/juegos">Volver</a>

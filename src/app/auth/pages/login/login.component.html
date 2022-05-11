@@ -34,13 +34,14 @@
             <div class="d-flex flex-column w-75">
                 <div class="data text-start mb-1">
                     <input class="w-100" type="text" [(ngModel)]="user" placeholder="Usuario">
-                    <input  class="w-100" type="text" [(ngModel)]="pass" placeholder="Contraseña">
+                    <input  class="w-100" type="password" [(ngModel)]="pass" placeholder="Contraseña">
     
                 </div>
     
                 <div class="botones d-flex justify-content-between">
                     <button class="boton entrar" (click)="login(user,pass)" >Ingresar</button>
-                    <button class="boton registrarse" (click)="redirigir()">Registrarme</button>
+                    <a class="boton registrarse" routerLink="/auth/registro">Registrarme</a>
+                    <button class="boton" (click)="completarRapido()">Ingreso Rapido</button>
     
                 </div>
             </div>

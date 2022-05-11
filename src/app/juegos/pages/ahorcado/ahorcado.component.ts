@@ -111,6 +111,7 @@ export class AhorcadoComponent implements OnInit {
     }
     else{
       this.cantidadIntentos--;
+      this.letras.splice(this.letras.indexOf(letra),1);
       if(this.cantidadIntentos == 0){
         setTimeout(() => {
           this.mostrarModal('PERDISTE','¿Queres seguir jugando?')

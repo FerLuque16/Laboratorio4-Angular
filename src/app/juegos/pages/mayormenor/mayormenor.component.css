@@ -7,6 +7,9 @@
     height: 100vh;
     overflow: hidden !important;
 }
+.modal{
+    color: black;
+}
 .acierto{
     color: green;
 }

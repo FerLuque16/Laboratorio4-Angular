@@ -21,4 +21,8 @@ export class AuthService {
     return this.auth.signOut();
   }
 
+  getUserLogged(){
+    return this.auth.authState;
+  }
+
 }

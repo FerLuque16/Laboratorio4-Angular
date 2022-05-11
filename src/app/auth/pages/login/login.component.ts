@@ -47,4 +47,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  completarRapido(){
+    this.user = 'test@gmail.com';
+    this.pass = 'test123';
+  }
+
+  verDatos(){
+    
+  }
+
 }
