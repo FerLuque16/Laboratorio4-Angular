@@ -7,6 +7,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
 import { RegistroComponent } from './auth/pages/registro/registro.component';
 import { JuegosModule } from './juegos/juegos.module';
+import { ChatModule } from './chat/chat.module';
 
 const routes: Routes = [
 
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path:'juegos',
     loadChildren:()=>import('./juegos/juegos.module').then(m => JuegosModule)
+  },
+  {
+    path:'chat',
+    loadChildren:()=>import('./chat/chat.module').then(m => ChatModule)
   },
   // {path:'registro',component:RegistroComponent},
   {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -12,18 +13,19 @@ export class RegistroComponent implements OnInit {
   user:string = '';
   pass: string = '';
 
-  constructor(private firestore: AngularFirestore, public auth:AuthService, private router: Router) { }
+  constructor(private firestore: AngularFirestore, public auth:AuthService, private router: Router, private toastr:ToastrService) { }
 
   ngOnInit(): void {
   }
   async registrar(name:string, pass:string){
     try {
       await this.auth.registrar(name,pass);
-
+      this.toastr.success('Registrado correctamente','Usted se ha logueado correctamente');
+      this.router.navigateByUrl('home');
       console.log("El usuario se registró correctamente");
     } catch (error:any) {
-      //this.toastr.error(this.utilidad.convertirMensaje(error.code),'Error al registrarse');
-      console.log(error.code);
+      this.toastr.error(error.code,'Error al registrarse');
+      
       
     }
   }

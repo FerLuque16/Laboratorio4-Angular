@@ -125,3 +125,10 @@ body{margin-top:20px;}
 	font-size:15px;
 	margin-right:10px;
 }
+
+
+@media (max-width: 576px) {
+	.img-thumbnail{
+		display: none;
+	}
+}
