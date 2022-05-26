@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { AuthService } from 'src/app/services/auth.service';
+import { ResultadosService } from '../../services/resultados.service';
+import { Resultado } from 'src/app/interfaces/resultado.interface';
+
 @Component({
   selector: 'app-reflejos',
   templateUrl: './reflejos.component.html',
@@ -15,6 +19,8 @@ export class ReflejosComponent implements OnInit {
   maxWait=20;
   timerID!:any;
 
+  responseTime:number = 0;
+
   multiplicadorRandom=0x015a4e35;
   randINCREMENT=1;
   today=new Date();
@@ -25,7 +31,13 @@ export class ReflejosComponent implements OnInit {
   modalMsj2: string = '';
 
   cambiarBg:boolean = false;
-  constructor(private ruteo: Router) { }
+
+  user:any;
+  constructor(private ruteo: Router, private auth: AuthService, private resultadoService: ResultadosService) { 
+    auth.getUserLogged().subscribe(usr =>{
+      this.user =  usr
+    })
+  }
 
   ngOnInit(): void {
   }
@@ -40,36 +52,18 @@ export class ReflejosComponent implements OnInit {
       this.startTime=new Date();
   }
 
-  remark(responseTime:number){
-      var responseString="";
-      if (responseTime < 0.20)
-          responseString="Well done!";
-      if (responseTime >= 0.30 && responseTime < 0.20)
-          responseString="Nice!";
-      if (responseTime >=0.40 && responseTime < 0.30)
-          responseString="Could be better...";
-      if (responseTime >=0.50 && responseTime < 0.60)
-          responseString="Keep practicing!";
-      if (responseTime >=0.60 && responseTime < 1)
-          responseString="Have you been drinking?";
-      if (responseTime >=1)
-          responseString="Did you fall asleep?";
-    
-      return responseString;
-  }
-
   stopTest(){
     if(this.bgChangeStarted)
     {
         this.endTime=new Date();
-        var responseTime=(this.endTime.getTime()-this.startTime.getTime())/1000;
+        this.responseTime=(this.endTime.getTime()-this.startTime.getTime())/1000;
 
         // document.body.style.background="white";       
         // alert("Your response time is: " + responseTime + 
         //       " seconds " + "\n" + this.remark(responseTime));
 
         // alert(`Tu tiempo de respuesta es de : ${responseTime} segundos`);
-        this.mostrarModal(`Tu tiempo de respuesta es de : ${responseTime} segundos`,'¿Desea jugar otra vez?')
+        this.mostrarModal(`Tu tiempo de respuesta es de : ${this.responseTime} segundos`,'¿Desea jugar otra vez?')
         this.iniciarPresionado=false;
         this.bgChangeStarted=false;
         this.cambiarBg = false;
@@ -113,6 +107,20 @@ export class ReflejosComponent implements OnInit {
   }
 
   terminarJuego(){
+
+    const tiempo = new Date().getTime();
+    const fecha = new Date(tiempo);    
+    const fechaParseada = fecha.toString();
+
+    let resultado: Resultado = {
+      uid: this.user.uid,
+      email: this.user.email,
+      fecha: fechaParseada,
+      juego: 'Reflejos',
+      resultado: `El tiempo de respuesta fue de ${this.responseTime} segundos`
+    }
+    this.resultadoService.enviarResultado(resultado);
+    this.displayModal = false;
     this.ruteo.navigateByUrl('/juegos')
   }
   reiniciar(){

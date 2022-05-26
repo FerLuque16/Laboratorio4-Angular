@@ -30,6 +30,9 @@ const routes: Routes = [
     path:'home', component:HomeComponent
   },
   {
+    path:'error',component:NotFoundComponent
+  },
+  {
     path:'quiensoy',component:QuienSoyComponent
   },
   {

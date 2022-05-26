@@ -50,7 +50,7 @@
           </button> -->
         </div>
         <div class="modal-body">
-          <p *ngIf="cantidadIntentos == 0">La palabra era: <strong>{{palabraElegida}}</strong> </p>
+          <p *ngIf="cantidadIntentos == 0">La palabra era: <strong>{{palabraElegida|titlecase}}</strong> </p>
           <p>{{modalMsj2}}</p>
         </div>
         <div class="modal-footer">

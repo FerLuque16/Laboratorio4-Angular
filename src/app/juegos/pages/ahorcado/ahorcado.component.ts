@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
+import { ResultadosService } from '../../services/resultados.service';
+import { Resultado } from 'src/app/interfaces/resultado.interface';
+
 
 @Component({
   selector: 'app-ahorcado',
@@ -24,15 +30,21 @@ export class AhorcadoComponent implements OnInit {
   cantidadIntentos: number = 0;
 
 
+  cantidadAdivinados: number = 0;
+  cantidadJugados: number = 1;
+
+
   displayModal:boolean = false;
   modalMsj1:string = '';
   modalMsj2: string = '';
 
 
+  user:any;
 
-
-  constructor(private ruteo: Router){
-
+  constructor(private ruteo: Router,private auth: AuthService, private resultadoService: ResultadosService){
+    auth.getUserLogged().subscribe(usr =>{
+      this.user =  usr
+    })
   }
   ngOnInit(): void {
     this.iniciarJuego();
@@ -71,12 +83,31 @@ export class AhorcadoComponent implements OnInit {
 
   reiniciar(){
     // this.palabraElegida = '';
+    this.cantidadJugados++;
     this.displayModal = false;
     this.iniciarJuego();
   }
 
   terminarJuego(){
     this.displayModal = false;
+
+    // this.cantidadJugados = 1;
+    const tiempo = new Date().getTime();
+    const fecha = new Date(tiempo);    
+    const fechaParseada = fecha.toString();
+
+    let resultado: Resultado = {
+      uid: this.user.uid,
+      email: this.user.email,
+      fecha: fechaParseada,
+      juego: 'Ahorcado',
+      aciertos: this.cantidadAdivinados,
+      intentos: this.cantidadJugados
+    }
+
+    this.resultadoService.enviarResultado(resultado);
+    console.log(this.cantidadJugados, this.cantidadAdivinados)
+    this.cantidadAdivinados = 0;
     this.ruteo.navigateByUrl('juegos')
   }
 
@@ -95,7 +126,9 @@ export class AhorcadoComponent implements OnInit {
       })
 
       if(this.letrasRestantes == 0){
-        setTimeout(() => {
+        this.cantidadAdivinados++;
+        console.log(this.cantidadJugados, this.cantidadAdivinados)
+        setTimeout(() => {       
           this.mostrarModal('GANASTE','¿Queres seguir jugando?');
         }, 500);     
       }

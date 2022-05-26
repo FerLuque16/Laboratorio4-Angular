@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { mergeMap } from 'rxjs';
 import { Card } from 'src/app/interfaces/carta.interface';
+import { AuthService } from 'src/app/services/auth.service';
 import { CartasService } from '../../services/cartas.service';
+import { ResultadosService } from '../../services/resultados.service';
+import { Resultado } from 'src/app/interfaces/resultado.interface';
+
 
 @Component({
   selector: 'app-mayormenor',
@@ -27,7 +31,13 @@ export class MayormenorComponent implements OnInit {
   modalMsj1:string = '';
   modalMsj2: string = '';
 
-  constructor(private cartaService:CartasService, private ruteo: Router) { }
+  user:any;
+
+  constructor(private cartaService:CartasService, private ruteo: Router, private auth: AuthService, private resultadoService: ResultadosService) { 
+    auth.getUserLogged().subscribe(usr =>{
+      this.user =  usr
+    })
+  }
 
   ngOnInit(): void {
     this.iniciarJuego();
@@ -141,6 +151,20 @@ export class MayormenorComponent implements OnInit {
 
   terminarJuego(){
     this.displayModal = false;
+    const tiempo = new Date().getTime();
+    const fecha = new Date(tiempo);    
+    const fechaParseada = fecha.toString();
+
+    let resultado: Resultado = {
+      uid: this.user.uid,
+      email: this.user.email,
+      fecha: fechaParseada,
+      juego: 'Mayor o menor',
+      aciertos: this.cantidadAciertos,
+      intentos: 5
+    }
+
+    this.resultadoService.enviarResultado(resultado);
     this.ruteo.navigateByUrl('/juegos');
 
   }

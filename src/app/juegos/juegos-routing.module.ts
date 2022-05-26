@@ -7,6 +7,7 @@ import { MayormenorComponent } from './pages/mayormenor/mayormenor.component';
 import { PreguntadosComponent } from './pages/preguntados/preguntados.component';
 import { ReflejosComponent } from './pages/reflejos/reflejos.component';
 import { JuegosComponent } from './pages/juegos.component';
+import { UserGuard } from '../guards/user.guard';
 
 const routes:Routes=[
   {
@@ -15,23 +16,28 @@ const routes:Routes=[
     children:[
       {
         path:'menu',
-        component:MenuComponent
+        component:MenuComponent,
+        canActivate:[UserGuard]
       },
       {
         path:'ahorcado',
-        component:AhorcadoComponent
+        component:AhorcadoComponent,
+        canActivate:[UserGuard]
       },
       {
         path:'mayormenor',
-        component:MayormenorComponent
+        component:MayormenorComponent,
+        canActivate:[UserGuard]
       },
       {
         path:'preguntados',
-        component:PreguntadosComponent
+        component:PreguntadosComponent,
+        canActivate:[UserGuard]
       },
       {
         path:'reflejos',
-        component:ReflejosComponent
+        component:ReflejosComponent,
+        canActivate:[UserGuard]
       },
       {
         path:'**',
