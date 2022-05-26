@@ -22,7 +22,6 @@ export class RegistroComponent implements OnInit {
       await this.auth.registrar(name,pass);
       this.toastr.success('Registrado correctamente','Usted se ha logueado correctamente');
       this.router.navigateByUrl('home');
-      console.log("El usuario se registró correctamente");
     } catch (error:any) {
       this.toastr.error(error.code,'Error al registrarse');
       

@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { MenuComponent } from './pages/menu/menu.component';
-import { AhorcadoComponent } from './pages/ahorcado/ahorcado.component';
-import { MayormenorComponent } from './pages/mayormenor/mayormenor.component';
-import { PreguntadosComponent } from './pages/preguntados/preguntados.component';
 import { ReflejosComponent } from './pages/reflejos/reflejos.component';
+import { PreguntadosComponent } from './pages/preguntados/preguntados.component';
+import { MayormenorComponent } from './pages/mayormenor/mayormenor.component';
+import { AhorcadoComponent } from './pages/ahorcado/ahorcado.component';
+import { MenuComponent } from './pages/menu/menu.component';
+import { RouterModule, Routes } from '@angular/router';
 import { JuegosComponent } from './pages/juegos.component';
-import { UserGuard } from '../guards/user.guard';
+import { UserGuard } from '../../guards/user.guard';
+
 
 const routes:Routes=[
   {
@@ -51,6 +52,7 @@ const routes:Routes=[
 @NgModule({
   declarations: [],
   imports: [
+    CommonModule,
     RouterModule.forChild(routes)
   ],
   exports:[

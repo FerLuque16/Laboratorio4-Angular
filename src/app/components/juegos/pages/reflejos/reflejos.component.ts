@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/services/auth.service';
-import { ResultadosService } from '../../services/resultados.service';
+
 import { Resultado } from 'src/app/interfaces/resultado.interface';
+import { ResultadosService } from 'src/app/services/resultados.service';
 
 @Component({
   selector: 'app-reflejos',
@@ -45,8 +46,6 @@ export class ReflejosComponent implements OnInit {
   
   startTest()
   {
-      // document.body.style.background=document.response.bgColorChange.options[
-      // document.response.bgColorChange.selectedIndex].text;
       this.cambiarBg = true;
       this.bgChangeStarted=true;
       this.startTime=new Date();
@@ -58,11 +57,7 @@ export class ReflejosComponent implements OnInit {
         this.endTime=new Date();
         this.responseTime=(this.endTime.getTime()-this.startTime.getTime())/1000;
 
-        // document.body.style.background="white";       
-        // alert("Your response time is: " + responseTime + 
-        //       " seconds " + "\n" + this.remark(responseTime));
-
-        // alert(`Tu tiempo de respuesta es de : ${responseTime} segundos`);
+        
         this.mostrarModal(`Tu tiempo de respuesta es de : ${this.responseTime} segundos`,'¿Desea jugar otra vez?')
         this.iniciarPresionado=false;
         this.bgChangeStarted=false;
@@ -72,13 +67,13 @@ export class ReflejosComponent implements OnInit {
     {
         if (!this.iniciarPresionado)
         {
-            alert("Presione iniciar primero");
+            // alert("Presione iniciar primero");
         }
         else
         {       
             clearTimeout(this.timerID);
             this.iniciarPresionado=false;             
-            alert("Presionaste antes!");
+            // alert("Presionaste antes!");
         }               
     }
   }
@@ -92,7 +87,7 @@ export class ReflejosComponent implements OnInit {
   startit(){
     if(this.iniciarPresionado)
     {
-        alert("Already started. Press stop to stop");
+        // alert("Ya empezó. Presione detener para deneter");
         return;
     }
     else

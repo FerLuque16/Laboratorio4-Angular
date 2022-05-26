@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { mergeMap } from 'rxjs';
 import { Card } from 'src/app/interfaces/carta.interface';
 import { AuthService } from 'src/app/services/auth.service';
-import { CartasService } from '../../services/cartas.service';
-import { ResultadosService } from '../../services/resultados.service';
+
 import { Resultado } from 'src/app/interfaces/resultado.interface';
+import { CartasService } from 'src/app/services/cartas.service';
+import { ResultadosService } from 'src/app/services/resultados.service';
 
 
 @Component({
@@ -59,8 +60,6 @@ export class MayormenorComponent implements OnInit {
   compararMenor(){
 
     this.cartaSiguiente = this.obtenerSiguienteCarta();
-    console.log(this.cartaAMostrar)
-    console.log(this.cartaSiguiente)
     if( parseInt(this.cartaSiguiente.value) < parseInt(this.cartaAMostrar.value)){
       console.log('ACERTASTE');
 
@@ -69,7 +68,6 @@ export class MayormenorComponent implements OnInit {
     }
     else{
       this.mensajeResultado = 'FALLASTE!'
-      console.log('FALLASTE')
     }
     // this.cartaAMostrar.image = '';
     setTimeout(() => {
@@ -79,10 +77,8 @@ export class MayormenorComponent implements OnInit {
     }, 500);
     
     this.cantidadIntentos--;
-    console.log(this.cantidadIntentos)
     if(this.cantidadIntentos == 0){
-      setTimeout(() => {
-        console.log(this.cantidadAciertos)
+      setTimeout(() => {  
         this.mostrarModal('JUEGO TERMINADO',`Lograste ${this.cantidadAciertos} aciertos en 5 intentos`)
         // alert(`Juego terminado lograste ${this.cantidadAciertos} aciertos en 5 intentos`);
       }, 200);
@@ -98,14 +94,11 @@ export class MayormenorComponent implements OnInit {
 
 
     if( parseInt(this.cartaSiguiente.value) > parseInt(this.cartaAMostrar.value)){
-      console.log('ACERTASTE');
       this.mensajeResultado = 'ACERTASTE!'
       this.cantidadAciertos++;
-      console.log(this.cantidadAciertos)
     }
     else{
       this.mensajeResultado = 'FALLASTE!'
-      console.log('FALLASTE')
     }
 
     //this.cartaAMostrar.image = '';
@@ -116,10 +109,8 @@ export class MayormenorComponent implements OnInit {
     
 
     this.cantidadIntentos--;
-    console.log(this.cantidadIntentos)
     if(this.cantidadIntentos == 0){
       setTimeout(() => {
-        console.log(this.cantidadAciertos)
         this.mostrarModal('JUEGO TERMINADO',`Lograste ${this.cantidadAciertos} aciertos en 5 intentos`)
         // alert(`Juego terminado lograste ${this.cantidadAciertos} aciertos en 5 intentos`);
       }, 200);
@@ -170,6 +161,5 @@ export class MayormenorComponent implements OnInit {
   }
 
 
-  // T
 
 }

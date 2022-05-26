@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
     try {
       await this.auth.login(user,pass)
       this.toastr.success('Logueado correctamente','Usted se ha logueado correctamente');
-      console.log("El usuario se logueó correctamente");
       const tiempo = new Date().getTime();
       const fecha = new Date(tiempo);    
       const fechaParseada = fecha.toString();
@@ -43,7 +42,7 @@ export class LoginComponent implements OnInit {
       this.ruteo.navigate(['home']);
       this.ruteo.navigateByUrl('home');
     } catch (error:any) {
-      console.log(error.message)
+      this.toastr.success('Error','Ha sucedido un error al loguearse');
     }
   }
 

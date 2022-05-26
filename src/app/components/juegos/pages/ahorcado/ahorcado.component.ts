@@ -3,8 +3,9 @@ import { User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { ResultadosService } from '../../services/resultados.service';
+
 import { Resultado } from 'src/app/interfaces/resultado.interface';
+import { ResultadosService } from 'src/app/services/resultados.service';
 
 
 @Component({
@@ -106,13 +107,11 @@ export class AhorcadoComponent implements OnInit {
     }
 
     this.resultadoService.enviarResultado(resultado);
-    console.log(this.cantidadJugados, this.cantidadAdivinados)
     this.cantidadAdivinados = 0;
     this.ruteo.navigateByUrl('juegos')
   }
 
   letraSeleccionada(letra:string){
-    console.log(letra);
     if(this.palabraAdivinar.includes(letra)){
 
 
@@ -127,13 +126,11 @@ export class AhorcadoComponent implements OnInit {
 
       if(this.letrasRestantes == 0){
         this.cantidadAdivinados++;
-        console.log(this.cantidadJugados, this.cantidadAdivinados)
         setTimeout(() => {       
           this.mostrarModal('GANASTE','¿Queres seguir jugando?');
         }, 500);     
       }
 
-      console.log(this.letras.indexOf(letra));
 
       this.letras.splice(this.letras.indexOf(letra),1);
       // console.log(this.letras)
@@ -164,7 +161,4 @@ export class AhorcadoComponent implements OnInit {
     this.modalMsj1 = msj1;
     this.modalMsj2 = msj2;
   }
-//   mandarPuntaje(){
-//     // this.puntajesService.enviarResultado(this.puntajeAcumulado,this.Usuario.id,this.Usuario.email, "ahorcado");
-//   }
 }

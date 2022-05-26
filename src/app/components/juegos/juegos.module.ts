@@ -5,11 +5,10 @@ import { MayormenorComponent } from './pages/mayormenor/mayormenor.component';
 import { AhorcadoComponent } from './pages/ahorcado/ahorcado.component';
 import { ReflejosComponent } from './pages/reflejos/reflejos.component';
 import { MenuComponent } from './pages/menu/menu.component';
-import { JuegosRoutingModule } from './juegos-routing.module';
-import { NavbarComponent } from '../shared/navbar/navbar.component';
-import { SharedModule } from '../shared/shared.module';
 import { JuegosComponent } from './pages/juegos.component';
-import { ChatModule } from '../chat/chat.module';
+import { JuegosRoutingModule } from './juegos-routing.module';
+import { ChatModule } from '../../chat/chat.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 
@@ -21,7 +20,6 @@ import { ChatModule } from '../chat/chat.module';
     ReflejosComponent,
     MenuComponent,
     JuegosComponent
-    
   ],
   imports: [
     CommonModule,

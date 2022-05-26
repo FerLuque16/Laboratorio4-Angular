@@ -6,8 +6,9 @@ import { LoginComponent } from './auth/pages/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
 import { RegistroComponent } from './auth/pages/registro/registro.component';
-import { JuegosModule } from './juegos/juegos.module';
 import { ChatModule } from './chat/chat.module';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
 
@@ -19,7 +20,7 @@ const routes: Routes = [
   },
   {
     path:'juegos',
-    loadChildren:()=>import('./juegos/juegos.module').then(m => JuegosModule)
+    loadChildren:()=>import('./components/juegos/juegos.module').then(m => m.JuegosModule)
   },
   {
     path:'chat',
@@ -28,6 +29,9 @@ const routes: Routes = [
   // {path:'registro',component:RegistroComponent},
   {
     path:'home', component:HomeComponent
+  },
+  {
+    path:'encuesta', component:EncuestaComponent, canActivate:[UserGuard]
   },
   {
     path:'error',component:NotFoundComponent

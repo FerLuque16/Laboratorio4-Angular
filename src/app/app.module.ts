@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
 import { Ejercicio1Component } from './components/ejercicio1/ejercicio1.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 // import { RegistroComponent } from './auth/pages/registro/registro.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -17,9 +17,10 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthRoutingModule } from './auth/auth-routing.module';
-import { JuegosRoutingModule } from './juegos/juegos-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { JuegosRoutingModule } from './components/juegos/juegos-routing.module';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     QuienSoyComponent,
     Ejercicio1Component,
-    NotFoundComponent
+    NotFoundComponent,
+    EncuestaComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth())
   ],

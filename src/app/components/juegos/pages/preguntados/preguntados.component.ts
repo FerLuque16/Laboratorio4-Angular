@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pais } from 'src/app/interfaces/pais.interface';
-import { PaisesService } from '../../services/paises.service';
+
 
 import { AuthService } from 'src/app/services/auth.service';
-import { ResultadosService } from '../../services/resultados.service';
+
 import { Resultado } from 'src/app/interfaces/resultado.interface';
+import { PaisesService } from 'src/app/services/paises.service';
+import { ResultadosService } from 'src/app/services/resultados.service';
 
 @Component({
   selector: 'app-preguntados',
@@ -60,11 +62,6 @@ export class PreguntadosComponent implements OnInit {
 
       this.preguntas = this.desordenarPreguntas(this.preguntas)
 
-      // console.log(this.paisesPregunta); 
-      console.log(this.paises);
-      console.log(this.paisCorrecto);
-
-      console.log(this.preguntas)
     })
   }
 
@@ -115,7 +112,6 @@ export class PreguntadosComponent implements OnInit {
   }
 
   respuestaSeleccionada(item:Pais){
-    console.log(item);
     if(item.name.common == this.paisCorrecto.name.common){
       item.correcto = true;
       this.cantidadAciertos++;

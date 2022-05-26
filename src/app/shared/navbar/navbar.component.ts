@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   usuarioLogueado:any;
 
-  constructor(private auth:AuthService) { }
+  constructor(private auth:AuthService, private router:Router) { }
 
   
 
@@ -22,6 +23,8 @@ export class NavbarComponent implements OnInit {
 
   cerrarSesion(){
     this.auth.logOut();
+    this.router.navigate(['/home'])
+
   }
 
 }

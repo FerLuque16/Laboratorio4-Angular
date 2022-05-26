@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import {take, map, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +14,19 @@ export class UserGuard implements CanActivate, CanDeactivate<unknown> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      if(this.authService.user){
-        console.log(this.authService.getUserLogged())
-        return true;
-      }
 
-      this.ruteo.navigate(['/error']);
-      return false;
-
-
-
+      return this.authService.getUserLogged()
+          .pipe(
+            take(1),
+            map(user => !!user),
+            tap(
+              loggedIn => {
+                if (!loggedIn) {
+                  this.ruteo.navigate(['/error']);
+                }
+              }
+            )
+          );
       
   }
   canDeactivate(
